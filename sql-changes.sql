@@ -1,0 +1,1 @@
+INSERT INTO `settings` (`id`, `name`, `value`) VALUES (NULL, 'weekly_update_day', 'friday');

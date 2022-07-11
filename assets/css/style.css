@@ -1,0 +1,123 @@
+body {
+    color: #000;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    padding: 30px;
+}
+
+.main {
+    margin-top: 50px;
+}
+
+.hide {
+	display: none !important;
+}
+
+.output-wrapper {
+	font-family: 'verdana';
+}
+
+.output-wrapper .completed-tasks,
+.output-wrapper .in-progress-tasks,
+.output-wrapper .query-tasks,
+.output-wrapper .note-tasks,
+.output-wrapper ol,
+.output-wrapper ol li {
+    margin-bottom: .25rem!important;
+}
+
+.output-wrapper .in-progress-tasks,
+.output-wrapper .query-tasks,
+.output-wrapper .note-tasks {
+	margin-top: 1rem!important;
+}
+
+label.error {
+    color: #dc3545!important;
+}
+
+.container{
+    width: 90%;
+}
+
+.form-inline .form-group{
+    margin-bottom: 15px !important;
+}
+.starter-template {
+    padding: 5px 15px;
+}
+span{
+    font-size: 17px;
+}
+.stud_detail{
+    width: 80%;
+}
+.main_hr{
+    border : 1px solid;
+}
+.font-20{
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+input.task_detail {
+    display: inline-block;
+    width: 91%;
+    margin-bottom: 10px;
+}
+input.extra_detail {
+    display: inline-block;
+    margin-left: 11%;
+    width: 80%;
+    margin-bottom: 10px;
+}
+.blank_error{
+    color: red;
+    font-size: 14px;
+}
+.extra{
+    margin: 0 5px;
+}
+.header p {
+    font-size: 35px;
+    color: #fff;
+    line-height: 70px;
+    font-weight: bold;
+    background: #000;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.alert .close {
+    font-size: 1.3rem;
+}
+
+/* Let's get this party started */
+.main-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Handle */
+.main-wrapper::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 11px;
+    background: #f8f9fa;
+    box-shadow: inset 0 0 30px #87aed6 !important;
+    -webkit-box-shadow: inset 0 0 30px #87aed6;
+}
+
+.footer-bottom-custom {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.main-wrapper {
+    max-height: 450px;
+    overflow: auto;
+}
