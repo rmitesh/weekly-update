@@ -29,8 +29,13 @@
 									<td><?php echo date('dS F Y', strtotime($project['mail_date'])) ?></td>
 									<td><?php echo date('dS F Y', strtotime($project['task_updated_at'])) ?></td>
 									<td>
-										<a href="<?php echo base_url('updates/view/'. $project['tracker_id'] . '/'.$project['task_id']) ?>" class="btn btn-outline-info">View</a>
-										<a href="<?php echo base_url('updates/delete/'. $project['tracker_id'] . '/'.$project['task_id']) ?>" data-id="<?php echo $project['task_id']; ?>" data-tracker-id="<?php echo $project['tracker_id']; ?>" class="btn btn-outline-danger remove-task">Delete</a>
+										<div class="dropdown">
+										  	<a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</a>
+										  	<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+										    	<a href="<?php echo base_url('updates/view/'. $project['tracker_id'] . '/'.$project['task_id']) ?>" class="dropdown-item">View</a>
+												<a href="<?php echo base_url('updates/delete/'. $project['tracker_id'] . '/'.$project['task_id']) ?>" data-id="<?php echo $project['task_id']; ?>" data-tracker-id="<?php echo $project['tracker_id']; ?>" class="dropdown-item">Delete</a>
+										  	</div>
+										</div>
 									</td>
 								</tr>
 							<?php } ?>

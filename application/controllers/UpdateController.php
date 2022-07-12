@@ -16,7 +16,7 @@ class UpdateController extends Frontend_Controller {
 
 	public function index()
 	{
-		$this->set_page_title('List your project');
+		$this->set_page_title('Project Update Listing');
 		$projects = $this->task->get_all_projects_with_task();
 		$this->data['projects'] = $projects;
 		$this->template->load( 'index', 'content', 'user/updates/index', $this->data );
@@ -48,6 +48,7 @@ class UpdateController extends Frontend_Controller {
 	{
 		$project = $this->project->get_by( ['tracker_id' => $tracker_id, 'is_deleted' => 0] );
 		$task = $this->task->get_by( ['project_id' => $project['id'], 'mail_date LIKE' => '%' . date('Y-m-d') . '%'] );
+
 		if ( !empty( $task ) ) {
 			$project_name = $project['name'];
 			$this->session->set_flashdata('error', "You have already written today's update mail for $tracker_id - $project_name .");
@@ -100,7 +101,7 @@ class UpdateController extends Frontend_Controller {
 				}
 				
 				$this->session->set_flashdata('success', 'Saved! Update mail has been added.');
-				base_url("updates/view/$tracker_id/$task_id");
+				redirect("updates/view/$tracker_id/$task_id");
 			}
 		}
 

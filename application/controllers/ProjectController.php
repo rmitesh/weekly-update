@@ -14,7 +14,7 @@ class ProjectController extends Frontend_Controller {
 	public function index()
 	{
 		$this->set_page_title('My Projects');
-
+		$this->db->order_by('created_at', 'desc');
 		$projects = $this->project->get_many_by( [ 'user_id' => get_loggedin_user_id(), 'is_deleted' => 0 ] );
 		$this->data['projects'] = $projects;
 
@@ -29,11 +29,15 @@ class ProjectController extends Frontend_Controller {
 			$project_name = $this->input->post('project_name', TRUE);
 			$client_name = $this->input->post('client_name', TRUE);
 			$tracker_name = $this->input->post('tracker_name', TRUE);
+			$tl_name = $this->input->post('tl_name', TRUE);
+			$tl_email = $this->input->post('tl_email', TRUE);
 
 			$this->form_validation->set_rules('tracker_id','Tracker Id','trim|required|numeric');
 			$this->form_validation->set_rules('project_name','Project Name','trim|required');
 			$this->form_validation->set_rules('client_name','Client Name','trim|required');
 			$this->form_validation->set_rules('tracker_name','Tracker Name','trim|required');
+			$this->form_validation->set_rules('tl_name','TL Name','trim|required');
+			$this->form_validation->set_rules('tl_email','TL Email','trim|required');
 
 			if( $this->form_validation->run() == false ) {
 				$this->session->set_flashdata('error', validation_errors());
@@ -46,6 +50,8 @@ class ProjectController extends Frontend_Controller {
 				'tracker_name' => $tracker_name,
 				'name' => $project_name,
 				'client_name' => $client_name,
+				'tl_name' => $tl_name,
+				'tl_email' => $tl_email,
 			);
 
 			$result = $this->project->insert( $insert_data );
@@ -65,22 +71,28 @@ class ProjectController extends Frontend_Controller {
 			$this->data['project'] = $project;
 			if ( $this->input->post() ) {
 				$_id = $this->input->post('_id', TRUE);
-				$project_name = $this->input->post('project_name', TRUE);
-				$client_name = $this->input->post('client_name', TRUE);
-				$tracker_name = $this->input->post('tracker_name', TRUE);
+				// $project_name = $this->input->post('project_name', TRUE);
+				// $client_name = $this->input->post('client_name', TRUE);
+				// $tracker_name = $this->input->post('tracker_name', TRUE);
+				$tl_name = $this->input->post('tl_name', TRUE);
+				$tl_email = $this->input->post('tl_email', TRUE);
 
-				$this->form_validation->set_rules('project_name','Project Name','trim|required');
-				$this->form_validation->set_rules('client_name','Client Name','trim|required');
-				$this->form_validation->set_rules('tracker_name','Tracker Name','trim|required');
+				// $this->form_validation->set_rules('project_name','Project Name','trim|required');
+				// $this->form_validation->set_rules('client_name','Client Name','trim|required');
+				// $this->form_validation->set_rules('tracker_name','Tracker Name','trim|required');
+				$this->form_validation->set_rules('tl_name','TL Name','trim|required');
+				$this->form_validation->set_rules('tl_email','TL Email','trim|required');
 
 				if( $this->form_validation->run() == false ) {
 					$this->session->set_flashdata('error', validation_errors());
 					redirect('project/'. $tracker_id .'/edit');
 				}
 				$update_data = array(
-					'tracker_name' => $tracker_name,
-					'name' => $project_name,
-					'client_name' => $client_name,
+					// 'tracker_name' => $tracker_name,
+					// 'name' => $project_name,
+					// 'client_name' => $client_name,
+					'tl_name' => $tl_name,
+					'tl_email' => $tl_email,
 				);
 				$result = $this->project->update( $_id, $update_data );
 				if ( $result ) {

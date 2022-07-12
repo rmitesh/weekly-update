@@ -71,7 +71,7 @@
 				    </div>
 				    <div class="form-group stud_detail">
 				        <label for="tl_name">TL Name : </label>
-				        <input type="text" class="form-control" id="tl_name" name="tl_name" placeholder="TL Name" onkeyup="SetTlName(this);" required />
+				        <input type="text" value="<?php echo $project['tl_name'] ?>" class="form-control" id="tl_name" name="tl_name" placeholder="TL Name" onkeyup="SetTlName(this);" required />
 				    </div>
 				    <div class="form-group">
 					    <button type="submit" class="btn btn-outline-success copy-and-save">Save</button>

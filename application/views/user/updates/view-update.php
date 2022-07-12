@@ -42,11 +42,12 @@
 	?>
 	<div class="row justify-content-between">
 		<div class="col-12">
-			<a href="mailto:joe@example.com?subject=<?php echo $subject; ?>" class="btn btn-outline-dark">Generate Mail</a>
+			<a href="mailto:joe@example.com?subject=<?php echo $subject; ?>" id="generate-mail" class="btn btn-outline-dark d-none">Generate Mail</a>
+			<a href="javascript: void(0);" class="btn btn-outline-dark" id="copy-mail">Copy Mail</a>
 			<hr />
 		</div>
 
-		<div class="col-md-12">
+		<div class="col-md-12" id="mail_body">
 			<span>Hi <?php echo $project['client_name'] ?>,</span>
 			<br><br>
 			<span>Following weekly <?php echo $subject ?>:</span>
@@ -90,10 +91,29 @@
 			<span>Please check with the latest updates and let us know your thoughts for the same.</span>
 			<br><br>
 
-			<span>Thanks,</span>
+			<span>Kind Regards,</span>
 			<br>
 			<?php echo ( $task['tl_name'] !== '' ) ? $task['tl_name'] : '-' ?>
 			<br>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		// let mail_body = $('#mail_body').text();
+		// mail_body = mail_body.replace(/\n/g, '<br>')
+		// let href = $('#generate-mail').attr('href');
+		// $('#generate-mail').attr('href', `${href}&body=${mail_body}`);
+	});
+
+	$(document).on('click', '#copy-mail', function(event) {
+		event.preventDefault();
+
+		$(this).addClass('disabled').html('Copied');
+		copy( $('#mail_body') );
+		setTimeout(() => {
+			$(this).removeClass('disabled').html('Copy Mail');
+		}, 4000)
+	});
+</script>

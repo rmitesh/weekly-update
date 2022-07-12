@@ -58,7 +58,7 @@
 
 					<div class="form-group">
 						<label for="tl_email">TL Email:</label>
-						<input type="email" name="tl_email" class="form-control tl_email" id="tl_email" placeholder="TL Email" />
+						<input type="email" name="tl_email" class="form-control tl_email" id="tl_email" placeholder="TL Email" required />
 					</div>
 				</div>
 			</div>

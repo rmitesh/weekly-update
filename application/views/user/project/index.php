@@ -2,7 +2,7 @@
 
 	<div class="d-flex justify-content-between">
 		<h5>Your Projects</h5>
-		<a href="<?php echo base_url('project/add-new') ?>" class="btn btn-link text-info">Add New Project</a>
+		<a href="<?php echo base_url('project/new') ?>" class="btn btn-link text-info">Add New Project</a>
 	</div>
 	<hr class="mt-1">
 	<?php $this->load->view('user/includes/alerts'); ?>
@@ -30,10 +30,13 @@
 									<td><?php echo $project['client_name'] ?></td>
 									<td><?php echo date('dS F Y', strtotime($project['created_at'])) ?></td>
 									<td>
-										<div class="">
-											<a href="<?php echo base_url( 'updates/new/' . $project['tracker_id'] ) ?>" class="btn btn-info">Write Update</a>
-											<a href="<?php echo base_url( 'project/' . $project['tracker_id'] . '/edit' ) ?>" class="btn btn-info">Edit</a>
-											<a href="javascript: void(0)" class="btn btn-danger">Delete</a>
+										<div class="dropdown">
+										  	<a class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</a>
+										  	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										    	<a href="<?php echo base_url( 'updates/new/' . $project['tracker_id'] ) ?>" class="dropdown-item">Write Update</a>
+										    	<a href="<?php echo base_url( 'project/' . $project['tracker_id'] . '/edit' ) ?>" class="dropdown-item">Edit</a>
+												<a href="javascript: void(0)" class="dropdown-item">Delete</a>
+										 	</div>
 										</div>
 									</td>
 								</tr>

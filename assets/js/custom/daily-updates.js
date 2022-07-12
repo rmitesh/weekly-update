@@ -1,6 +1,8 @@
 var blank_txt = "<span class='col-md-12 blank_error' style='color:red;'>Please Fill Existing Field.</span>";
 
-$('#client_name, #project_name').trigger('keyup');
+$(document).ready(function() {
+    $('#client_name, #project_name, #tl_name').trigger('keyup');
+});
 
 $(document).on('keyup', '.task_detail', function(e) {
     if( e.keyCode === 13 ) {
